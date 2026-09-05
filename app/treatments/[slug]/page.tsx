@@ -5,63 +5,6 @@ import { SiteFooter } from "../../components/SiteFooter";
 import { SiteNavbar } from "../../components/SiteNavbar";
 import { getTreatment, treatments } from "../data";
 
-const causes = [
-  "Osteoarthritis and rheumatoid arthritis",
-  "Sports injuries and ligament tears",
-  "Meniscus injuries",
-  "Tendon and cartilage damage",
-  "Fractures around the joint",
-  "Obesity and excessive strain on the joints",
-];
-
-const symptoms = [
-  "Swelling and stiffness",
-  "Difficulty walking or climbing stairs",
-  "Clicking or locking of the joint",
-  "Reduced range of motion",
-  "Weakness while standing",
-  "Pain during physical activities",
-];
-
-const treatmentOptions = [
-  {
-    title: "Medications",
-    icon: "Rx",
-    description:
-      "Pain-relieving and anti-inflammatory medications help reduce discomfort, control inflammation, and improve joint function during the early stages.",
-  },
-  {
-    title: "Physiotherapy",
-    icon: "PT",
-    description:
-      "Personalized physiotherapy strengthens the muscles around the joint, improves flexibility, restores mobility, and supports long-term joint health.",
-  },
-  {
-    title: "Lifestyle Modifications",
-    icon: "LM",
-    description:
-      "Maintaining a healthy weight, staying active, and adopting joint-friendly habits can reduce stress and slow the progression of joint damage.",
-  },
-  {
-    title: "Arthroscopy",
-    icon: "AR",
-    description:
-      "A minimally invasive procedure used to diagnose and treat ligament injuries, cartilage damage, and meniscus tears through small incisions.",
-  },
-  {
-    title: "Robotic Knee Replacement",
-    icon: "RK",
-    description:
-      "Advanced robotic-assisted surgery provides greater precision, improved implant alignment, and faster recovery for patients with severe arthritis.",
-  },
-  {
-    title: "Total Knee Replacement Surgery",
-    icon: "TK",
-    description:
-      "This procedure replaces the damaged joint with a durable artificial implant, relieving chronic pain and restoring comfortable movement and mobility.",
-  },
-];
-
 function CheckIcon() {
   return (
     <span className="relative mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-[#2b82cf]">
@@ -133,7 +76,7 @@ export default async function TreatmentDetailPage({
               Common Causes
             </h2>
             <ol className="mt-4 divide-y divide-[#b8d8ef]">
-              {causes.map((cause, index) => (
+              {treatment.causes.map((cause, index) => (
                 <li
                   key={cause}
                   className="flex items-center gap-4 py-3 text-base font-medium text-[#5d5d5d]"
@@ -152,7 +95,7 @@ export default async function TreatmentDetailPage({
               Symptoms
             </h2>
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {symptoms.map((symptom) => (
+              {treatment.symptoms.map((symptom) => (
                 <div
                   key={symptom}
                   className="flex min-h-16 items-start gap-4 rounded border border-[#88bdec] px-4 py-3 text-base font-semibold leading-5 text-[#405064]"
@@ -169,7 +112,7 @@ export default async function TreatmentDetailPage({
               Treatment Options
             </h2>
             <div className="mt-4 divide-y divide-[#b8d8ef]">
-              {treatmentOptions.map((option) => (
+              {treatment.treatmentOptions.map((option) => (
                 <div key={option.title} className="flex gap-4 py-4">
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#2f86d2] text-[10px] font-bold text-white">
                     {option.icon}

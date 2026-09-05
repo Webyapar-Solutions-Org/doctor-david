@@ -7,10 +7,7 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteNavbar } from "../components/SiteNavbar";
 import { blogPosts } from "./data";
 
-const posts = Array.from({ length: 8 }, (_, index) => ({
-  id: index + 1,
-  ...blogPosts[0],
-}));
+const posts = blogPosts;
 
 function SearchIcon() {
   return (
@@ -53,26 +50,26 @@ function BlogCard({
   );
 }
 
-function PageButton({
-  children,
-  active = false,
-}: {
-  children: React.ReactNode;
-  active?: boolean;
-}) {
-  return (
-    <button
-      className={`flex h-10 min-w-10 items-center justify-center rounded border text-sm font-semibold ${
-        active
-          ? "border-[#2f84cf] bg-[#2f84cf] text-white"
-          : "border-[#8cc1ef] text-[#2d6ea9] hover:bg-[#e2f1ff]"
-      }`}
-      type="button"
-    >
-      {children}
-    </button>
-  );
-}
+// function PageButton({
+//   children,
+//   active = false,
+// }: {
+//   children: React.ReactNode;
+//   active?: boolean;
+// }) {
+//   return (
+//     <button
+//       className={`flex h-10 min-w-10 items-center justify-center rounded border text-sm font-semibold ${
+//         active
+//           ? "border-[#2f84cf] bg-[#2f84cf] text-white"
+//           : "border-[#8cc1ef] text-[#2d6ea9] hover:bg-[#e2f1ff]"
+//       }`}
+//       type="button"
+//     >
+//       {children}
+//     </button>
+//   );
+// }
 
 export default function BlogPage() {
   return (
@@ -107,7 +104,7 @@ export default function BlogPage() {
           ))}
         </div>
 
-        <div className="mt-14 flex items-center justify-center gap-4">
+        {/* <div className="mt-14 flex items-center justify-center gap-4">
           <PageButton>
             <span className="text-2xl leading-none">&lsaquo;</span>
           </PageButton>
@@ -120,7 +117,7 @@ export default function BlogPage() {
           <PageButton>
             <span className="text-2xl leading-none">&rsaquo;</span>
           </PageButton>
-        </div>
+        </div> */}
       </section>
 
       <SiteFooter variant="home" />

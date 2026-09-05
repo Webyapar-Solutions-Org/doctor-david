@@ -1,4 +1,5 @@
 export type BlogPost = {
+  id: number;
   title: string;
   slug: string;
   image: string;
@@ -8,6 +9,7 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 1,
     title: "Bone Weakness: Warning Signs You Should Never Ignore",
     slug: "bone-weakness-warning-signs-you-should-never-ignore",
     image: "/treatment/5.png",

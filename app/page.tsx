@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { HomeAboutSection } from "./components/HomeAboutSection";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteNavbar } from "./components/SiteNavbar";
 
@@ -34,9 +35,6 @@ const treatments = [
 
 const insights = [
   "Bone Weakness: Warning Signs You Should Never Ignore",
-  "Bone Weakness: Warning Signs You Should Never Ignore",
-  "Bone Weakness: Warning Signs You Should Never Ignore",
-  "Bone Weakness: Warning Signs You Should Never Ignore",
 ];
 
 const whatsappUrl =
@@ -59,7 +57,7 @@ function TreatmentCard({
         className="aspect-[1.5] w-full rounded-md object-cover"
       />
       <h3 className="mt-4 text-base font-bold text-[#2a84d3]">{title}</h3>
-      <p className="mt-2 min-h-[92px] text-[15px] font-medium leading-5 text-[#46586a]">
+      <p className="mt-2 md:min-h-[92px] text-[15px] font-medium leading-5 text-[#46586a]">
         {description}
       </p>
       <a
@@ -95,7 +93,7 @@ function InsightCard({ title, index }: { title: string; index: number }) {
       </a>
       {index === 0 ? (
         <a
-          href="#blog"
+          href="/blog"
           className="mt-4 flex h-10 w-28 items-center justify-center gap-2 rounded-md bg-[#0f4d86] text-sm font-medium text-white transition hover:bg-[#0a3c69]"
         >
           Read more
@@ -160,53 +158,7 @@ export default function HomePage() {
         </a>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl px-5 py-16 md:py-20">
-        <h2 className="text-3xl font-bold text-[#2a84d3]">
-          About Dr. Vivek Kumar David
-        </h2>
-        <p className="mt-1 text-sm font-bold text-[#2a84d3]">
-          Robotic Joint Replacement Surgeon | Orthopaedic Surgeon | Arthroplasty
-          Specialist | Sports Injury Expert | Trauma Care Specialist
-        </p>
-        <div className="mt-8 space-y-8 text-[17px] font-medium leading-9 tracking-wide text-[#34465a]">
-          <p>
-            Dr. Vivek Kumar David is a highly skilled Orthopaedic and Robotic
-            Joint Replacement Surgeon with over 10 years of experience in
-            delivering advanced bone and joint care. Having successfully
-            performed 5,000+ joint replacement and orthopaedic surgeries, he is
-            dedicated to helping patients regain mobility, relieve pain, and
-            improve their quality of life through evidence-based and
-            patient-centric treatment.
-          </p>
-          <p>
-            He completed his MBBS followed by MS in Orthopaedics from Christian
-            Medical College (CMC), Ludhiana, one of India&apos;s premier medical
-            institutions. Further strengthening his expertise, he pursued
-            advanced Fellowship training in Arthroplasty (Joint Replacement
-            Surgery) and continues to stay at the forefront of modern
-            orthopaedic techniques, including robotic-assisted joint replacement
-            and minimally invasive procedures.
-          </p>
-          <div>
-            <h3 className="font-bold">Professional Excellence & Achievements</h3>
-            <p>
-              Dr. Vivek Kumar David has received recognition for his dedication
-              to orthopaedics and clinical excellence. His notable achievements
-              include:
-            </p>
-            <ul className="mt-2 list-disc space-y-1 pl-6">
-              <li>Times of India Health Icon Award - 2024</li>
-              <li>AO Trauma (Switzerland) Certification</li>
-              <li>Fellowship in Arthroplasty</li>
-              <li>Best Outgoing Postgraduate (CMC) Award</li>
-            </ul>
-          </div>
-          <p>
-            These accomplishments reflect his commitment to continuous learning,
-            surgical precision, and excellence in patient care.
-          </p>
-        </div>
-      </section>
+      <HomeAboutSection />
 
       <section
         id="treatments"
