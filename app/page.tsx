@@ -1,69 +1,245 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { SiteFooter } from "./components/SiteFooter";
+import { SiteNavbar } from "./components/SiteNavbar";
 
-export default function Home() {
+const treatments = [
+  {
+    title: "Knee Pain",
+    image: "/treatment/1.png",
+    description:
+      "Pain in or around the knee that may indicate a condition affecting the knee joint itself or the soft tissue around the knee.",
+  },
+  {
+    title: "Hip Joint Pain",
+    image: "treatment/2.png",
+    description:
+      "Hip pain is a common symptom that can be caused by anything from sports injuries to arthritis.",
+  },
+  {
+    title: "Low Back Pain",
+    image: "treatment/3.png",
+    description:
+      "Low back pain is caused by injury to a muscle or ligament strain. Common causes include improper lifting.",
+  },
+  {
+    title: "Shoulder Pain",
+    image: "/treatment/4.png",
+    description:
+      "The most common cause of shoulder pain occurs when rotator cuff become trapped under bony area in the shoulder.",
+  },
+];
+
+const insights = [
+  "Bone Weakness: Warning Signs You Should Never Ignore",
+  "Bone Weakness: Warning Signs You Should Never Ignore",
+  "Bone Weakness: Warning Signs You Should Never Ignore",
+  "Bone Weakness: Warning Signs You Should Never Ignore",
+];
+
+const whatsappUrl =
+  "https://wa.me/918877733305?text=Hello%20Dr.%20Vivek%20Kumar%20David%2C%20I%20would%20like%20to%20book%20an%20appointment.";
+
+function TreatmentCard({
+  title,
+  image,
+  description,
+}: {
+  title: string;
+  image: string;
+  description: string;
+}) {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <article>
+      <img
+        src={image}
+        alt={title}
+        className="aspect-[1.5] w-full rounded-md object-cover"
+      />
+      <h3 className="mt-4 text-base font-bold text-[#2a84d3]">{title}</h3>
+      <p className="mt-2 min-h-[92px] text-[15px] font-medium leading-5 text-[#46586a]">
+        {description}
+      </p>
+      <a
+        href="#treatments"
+        className="mt-4 inline-flex h-8 items-center gap-2 rounded border border-[#2a84d3] px-3 text-xs font-semibold text-[#2a84d3] transition hover:bg-[#e9f5ff]"
+      >
+        Know more
+        <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" aria-hidden="true" />
+      </a>
+    </article>
+  );
+}
+
+function InsightCard({ title, index }: { title: string; index: number }) {
+  return (
+    <article>
+      <Image
+        src="/treatment/5.png"
+        alt="Bone weakness warning signs"
+        width={1205}
+        height={1305}
+        className="aspect-[1.05] w-full rounded-md object-cover"
+      />
+      <h3 className="mt-4 text-base font-bold leading-5 text-[#2a84d3]">
+        {title}
+      </h3>
+      <a
+        href="#blog"
+        className="mt-4 inline-flex h-8 items-center gap-2 rounded border border-[#2a84d3] px-3 text-xs font-medium text-[#2a84d3] transition hover:bg-[#e9f5ff]"
+      >
+        Read this
+        <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" aria-hidden="true" />
+      </a>
+      {index === 0 ? (
+        <a
+          href="#blog"
+          className="mt-4 flex h-10 w-28 items-center justify-center gap-2 rounded-md bg-[#0f4d86] text-sm font-medium text-white transition hover:bg-[#0a3c69]"
+        >
+          Read more
+          <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" aria-hidden="true" />
+        </a>
+      ) : null}
+    </article>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <main id="home" className="min-h-screen bg-[#eaf4fc] text-[#26384d]">
+      <section className="relative min-h-[760px] overflow-hidden bg-[#1d3f7d] text-white">
         <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/hero.png"
+          alt=""
+          width={1440}
+          height={1024}
           priority
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        <div className="absolute inset-0" />
+
+        <SiteNavbar active="home" variant="transparent" />
+
+        <div className="relative z-10 mx-auto grid max-w-6xl items-end gap-8 px-5 pt-8 md:pt-14 md:grid-cols-[0.9fr_1fr]">
+          <img
+            src="/david.png"
+            alt="Dr. Vivek Kumar David"
+            width="1000"
+            height="4000"
+            className="order-2 md:order-1 mx-auto max-h-[640px] w-auto object-contain"
+          />
+          <div className="order-1 md:order-2 pb-5 md:pb-56">
+            <h1 className="max-w-xl text-xl font-medium leading-8 text-white">
+              Helping You Move Better. Live Better.
+            </h1>
+            <p className="mt-2 max-w-xl text-xl font-medium leading-7 text-white/90">
+              Every step matters. Through advanced robotic joint replacement,
+              precision orthopaedic surgery, and compassionate patient care, our
+              mission is to restore mobility, relieve pain, and help you return
+              to an active, fulfilling life.
+            </p>
+            <div className="mt-12">
+              <p className="text-xl font-bold">Dr. Vivek Kumar David</p>
+              <p className="mt-1 text-lg font-bold">
+                Robotic Joint Replacement & Orthopaedic Surgeon
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-3xl text-white shadow-lg ring-4 ring-white/75 transition hover:bg-[#1fb457] md:bottom-12 md:right-12"
+          aria-label="Contact on WhatsApp"
+        >
+          <FontAwesomeIcon icon={faWhatsapp} aria-hidden="true" />
+        </a>
+      </section>
+
+      <section id="about" className="mx-auto max-w-6xl px-5 py-16 md:py-20">
+        <h2 className="text-3xl font-bold text-[#2a84d3]">
+          About Dr. Vivek Kumar David
+        </h2>
+        <p className="mt-1 text-sm font-bold text-[#2a84d3]">
+          Robotic Joint Replacement Surgeon | Orthopaedic Surgeon | Arthroplasty
+          Specialist | Sports Injury Expert | Trauma Care Specialist
+        </p>
+        <div className="mt-8 space-y-8 text-[17px] font-medium leading-9 tracking-wide text-[#34465a]">
+          <p>
+            Dr. Vivek Kumar David is a highly skilled Orthopaedic and Robotic
+            Joint Replacement Surgeon with over 10 years of experience in
+            delivering advanced bone and joint care. Having successfully
+            performed 5,000+ joint replacement and orthopaedic surgeries, he is
+            dedicated to helping patients regain mobility, relieve pain, and
+            improve their quality of life through evidence-based and
+            patient-centric treatment.
+          </p>
+          <p>
+            He completed his MBBS followed by MS in Orthopaedics from Christian
+            Medical College (CMC), Ludhiana, one of India&apos;s premier medical
+            institutions. Further strengthening his expertise, he pursued
+            advanced Fellowship training in Arthroplasty (Joint Replacement
+            Surgery) and continues to stay at the forefront of modern
+            orthopaedic techniques, including robotic-assisted joint replacement
+            and minimally invasive procedures.
+          </p>
+          <div>
+            <h3 className="font-bold">Professional Excellence & Achievements</h3>
+            <p>
+              Dr. Vivek Kumar David has received recognition for his dedication
+              to orthopaedics and clinical excellence. His notable achievements
+              include:
+            </p>
+            <ul className="mt-2 list-disc space-y-1 pl-6">
+              <li>Times of India Health Icon Award - 2024</li>
+              <li>AO Trauma (Switzerland) Certification</li>
+              <li>Fellowship in Arthroplasty</li>
+              <li>Best Outgoing Postgraduate (CMC) Award</li>
+            </ul>
+          </div>
+          <p>
+            These accomplishments reflect his commitment to continuous learning,
+            surgical precision, and excellence in patient care.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section
+        id="treatments"
+        className="relative overflow-hidden bg-[#d4eafa] py-16 md:py-20"
+      >
+        <div className="absolute inset-x-0 top-0 h-28 bg-[#b7d7ef] [clip-path:polygon(0_0,100%_0,100%_100%,0_3%)]" />
+        <div className="relative mx-auto max-w-6xl px-5">
+          <h2 className="text-3xl font-bold text-[#2a84d3]">Treatments Offered</h2>
+          <div className="mt-8 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+            {treatments.map((treatment) => (
+              <TreatmentCard key={treatment.title} {...treatment} />
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section id="blog" className="mx-auto max-w-6xl px-5 py-16 md:py-20">
+        <h2 className="text-3xl font-bold text-[#2a84d3]">
+          Orthopaedic Insights
+        </h2>
+        <p className="mt-4 max-w-5xl text-xl font-medium leading-7 text-[#425366]">
+          Explore expert guidance on bone and joint health, injury prevention,
+          arthritis care, and advanced treatment options.
+        </p>
+        <div className="mt-7 h-px w-20 bg-[#2a84d3]" />
+        <div className="mt-5 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+          {insights.map((title, index) => (
+            <InsightCard key={`${title}-${index}`} title={title} index={index} />
+          ))}
+        </div>
+      </section>
+
+      <SiteFooter variant="home" />
+    </main>
   );
 }
