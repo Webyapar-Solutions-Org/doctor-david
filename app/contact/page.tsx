@@ -21,6 +21,7 @@ const appointments = [
   },
 ];
 
+
 function PhoneIcon() {
   return (
     <span className="relative h-5 w-5" aria-hidden="true">
