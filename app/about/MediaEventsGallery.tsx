@@ -9,19 +9,19 @@ const galleryTabs = [
     label: "Media",
     images: [
       {
-        src: "/about-assets/media-surgery-1.png",
+        src: "/media/1.png",
         alt: "Surgical team during an orthopaedic procedure",
       },
       {
-        src: "/about-assets/media-surgery-2.png",
+        src: "/media/2.png",
         alt: "Doctor performing joint replacement surgery",
       },
       {
-        src: "/about-assets/media-patient.png",
+        src: "/media/3.png",
         alt: "Dr. Vivek Kumar David with a patient",
       },
       {
-        src: "/about-assets/media-event.png",
+        src: "/media/4.png",
         alt: "Dr. Vivek Kumar David at a medical event",
       },
     ],
@@ -78,8 +78,10 @@ const galleryTabs = [
   },
 ] as const;
 
+type GalleryTab = (typeof galleryTabs)[number];
+
 export function MediaEventsGallery() {
-  const [activeTab, setActiveTab] = useState(galleryTabs[0]);
+  const [activeTab, setActiveTab] = useState<GalleryTab>(galleryTabs[0]);
 
   return (
     <>
@@ -109,8 +111,8 @@ export function MediaEventsGallery() {
             key={`${activeTab.id}-${image.src}`}
             src={image.src}
             alt={image.alt}
-            width={1260}
-            height={850}
+            width={300}
+            height={200}
             className="aspect-[1.48] w-full rounded-md border border-[#b8d4e9] object-cover shadow-sm"
           />
         ))}
